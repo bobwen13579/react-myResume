@@ -1,13 +1,8 @@
 import React from 'react';
-import Homepage from './app/components/Homepage/Homepage';
-import rootStore from "./app/reudx/store";
+import Homepage from './app/components/mainPage/Homepage/Homepage';
 
-function App(props) {
-  console.log('update');
-  const state = rootStore.getState();
+export default function App(props) {
   return (
-      <Homepage {...props} {...state}/>
+      <Homepage />
   );
 }
-
-export default App;

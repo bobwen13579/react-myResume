@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import { Provider } from 'react-redux'
-import rootStore from './app/reudx/store'
 import { BrowserRouter, Route } from 'react-router-dom'
+
+import App from './App';
+import Poempages from './Poempages';
+import rootStore from './app/reudx/store'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <Provider store={rootStore}>
         <BrowserRouter>
             <Route exact path="/" component={App} />
+            <Route exact path="/poem" component={Poempages} />
         </BrowserRouter>
     </Provider>,
 document.getElementById('root'));
