@@ -5,11 +5,11 @@ import './Homepage.css';
 import Footer from '../Footer/Footer'
 import ImgCarousel from '../ImgCarousel/ImgCarousel'
 import HeaderNav from "../HeaderNav/HeaderNav";
-
+import Resume from "../Resume/Resume";
 
 import { connect } from 'react-redux'
 import { addCount }  from '../../../reudx/actions/poems';
-import { getCount }  from '../../../reudx/selectors';
+import {getAuthorList} from '../../../reudx/selectors';
 
 class Homepage extends Component{
 
@@ -34,10 +34,10 @@ class Homepage extends Component{
     render() {
         console.log(this.props.count);
         return (
-            <div>
+            <div className='mainDiv'>
                 <HeaderNav/>
+                <Resume {...this.props} />
                 <Button onClick={this.add}>{this.props.count}</Button>
-                <ImgCarousel />
                 <Footer />
             </div>
         );
@@ -46,6 +46,6 @@ class Homepage extends Component{
 
 
 export default connect(
-    getCount,
+    getAuthorList,
     { addCount }
 )(Homepage)

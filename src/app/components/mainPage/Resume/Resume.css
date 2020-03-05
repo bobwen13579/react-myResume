@@ -1,0 +1,8 @@
+.contain{
+    margin: auto;
+    padding: 10px;
+    min-width: 400px;
+    min-height: 300px;
+    width: 80vw;
+    height: 60vh;
+}
