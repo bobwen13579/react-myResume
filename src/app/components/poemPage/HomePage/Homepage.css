@@ -1,9 +1,22 @@
 .main{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    height: 100vh;
 }
-.poemList{
-    min-width: 600px;
-    max-width: 800px;
+.authorList{
+    flex-grow: 0;
+    min-width: 240px;
+    max-width: 240px;
+    height: 100%;
+}
+.authorCard{
+
+}
+.authorCard:hover{
+    background-color: #1DA57A;
+}
+
+.content{
+    flex-grow: 1;
+    overflow: scroll;
 }

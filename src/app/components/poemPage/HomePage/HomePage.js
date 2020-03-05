@@ -3,8 +3,10 @@ import { List, Input } from 'antd';
 import { connect } from 'react-redux'
 
 import './Homepage.css'
-import { fetchPoems }  from '../../../reudx/actions/poems';
-import { getPoems }  from '../../../reudx/selectors';
+import ContentPoems from '../ContentPoems/ContentPoems'
+import HeaderAuthor from '../HeaderAuthor/HeaderAuthor'
+import { fetchAuthorList, fetchAuthorLiked, chooseAuthors, fetchPoemsByAuthor }  from '../../../reudx/actions/poems';
+import { getAuthorList }  from '../../../reudx/selectors';
 
 const { Search } = Input;
 
@@ -15,37 +17,48 @@ class Homepage extends Component{
     }
 
     componentDidMount() {
-        this.props.fetchPoems();
+        this.props.fetchAuthorList();
     }
 
-    render() {
-        let showArr = [];
-        if(this.props.poems.length > 10) {
-            showArr = this.props.poems.slice(0,10);
-        }
-        console.log(showArr);
+    search = (value) => {
+        this.props.fetchAuthorLiked(value);
+    };
 
+    authorClick = (e, item) =>{
+        this.props.chooseAuthors(item.name, item.desc);
+        this.props.fetchPoemsByAuthor(item.name);
+    };
+
+    render() {
+        console.log(this.props);
         return (
             <div className='main'>
-                <List
-                    size="small"
-                    header={
-                        <Search
-                            placeholder="input name"
-                            enterButton="Search"
-                            size="small"
-                            onSearch={value => console.log(value)}
-                        />
-                    }
-                    footer={<div>back to the main</div>}
-                    bordered
-                    dataSource={showArr}
-                    renderItem={item => (
-                        <List.Item>
-                            <div>{item.name}</div>
-                        </List.Item>
-                    )}
-                />
+                <div className='authorList'>
+                    <List
+                        size="small"
+                        header={
+                            <Search
+                                placeholder="input name"
+                                enterButton="Search"
+                                size="small"
+                                onSearch={value => this.search(value)}
+                            />
+                        }
+                        bordered
+                        dataSource={this.props.authorList}
+                        renderItem={item => (
+                            <List.Item className='authorCard' onClick={ (e) => this.authorClick(e, item)}>
+                                <div>
+                                    {item.name}
+                                </div>
+                            </List.Item>
+                        )}
+                    />
+                </div>
+                <div className="content">
+                    <HeaderAuthor/>
+                    <ContentPoems {...this.props}/>
+                </div>
             </div>
 
         );
@@ -54,6 +67,6 @@ class Homepage extends Component{
 
 
 export default connect(
-    getPoems,
-    { fetchPoems }
+    getAuthorList,
+    { fetchAuthorList, fetchAuthorLiked, chooseAuthors, fetchPoemsByAuthor }
 )(Homepage)

@@ -1,45 +1,60 @@
 // 处理action
-import { ADD_POEM, ADD_COUNT, FETCHPOEMSUCCESS } from "../constants/action-types";
+import { ADD_COUNT, FETCH_AUTHOR_LIST_SUCCESS, FETCH_AUTHOR_LIKED_SUCCESS,
+    CHOOSE_AUTHOR,FETCH_POEMS_BY_AUTHOR_SUCCESS
+} from "../constants/action-types";
 
 const initialState = {
-    poems: [
+    authorList: [
         {
             title: '123123',
             para: []
         },
     ],
+    author: {
+        name: '',
+        des: ''
+    },
+    poemList:[],
     count: 1,
 };
 
 const poems = function(state= initialState, action) {
     switch (action.type) {
-        case ADD_POEM: {
-            console.log(action.payload);
-            return {
-                ...state,
-                poems: [...state.poems, action.payload]
-            }
-        }
-
         case ADD_COUNT: {
-            // 直接修改state是错误的用法
-            // 用Object.assign()进行拷贝
-            //state.poems.count = action.payload;
-            console.log('action get');
             return {
                 ...state,
                 count: action.payload
             }
         }
 
-        case FETCHPOEMSUCCESS: {
+        case FETCH_AUTHOR_LIST_SUCCESS: {
+            console.log(action);
+            return {
+                ...state,
+                authorList: action.payload
+            }
+        }
+        case FETCH_AUTHOR_LIKED_SUCCESS: {
             console.log(action, 'poems get');
             return {
                 ...state,
-                poems: action.poems
+                authorList: action.payload
             }
         }
 
+        case CHOOSE_AUTHOR: {
+            return {
+                ...state,
+                author: action.payload
+            }
+        }
+
+        case FETCH_POEMS_BY_AUTHOR_SUCCESS: {
+            return {
+                ...state,
+                poemList: action.payload
+            }
+        }
         default:
             return state;
     }

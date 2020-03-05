@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+
 import { Button } from 'antd';
 import './Homepage.css';
 import Footer from '../Footer/Footer'
@@ -8,7 +8,7 @@ import HeaderNav from "../HeaderNav/HeaderNav";
 
 
 import { connect } from 'react-redux'
-import { addCount, fetchPoems }  from '../../../reudx/actions/poems';
+import { addCount }  from '../../../reudx/actions/poems';
 import { getCount }  from '../../../reudx/selectors';
 
 class Homepage extends Component{
@@ -31,17 +31,12 @@ class Homepage extends Component{
         // });
     };
 
-    fetchPoems = () => {
-        this.props.fetchPoems();
-    }
-
     render() {
         console.log(this.props.count);
         return (
             <div>
                 <HeaderNav/>
                 <Button onClick={this.add}>{this.props.count}</Button>
-                <Button onClick={this.fetchPoems}>poems</Button>
                 <ImgCarousel />
                 <Footer />
             </div>
@@ -49,12 +44,8 @@ class Homepage extends Component{
     }
 }
 
-const mapStateToProps = state => {
-    console.log(state);
-    return state.poems;
-};
 
 export default connect(
     getCount,
-    { addCount, fetchPoems }
+    { addCount }
 )(Homepage)

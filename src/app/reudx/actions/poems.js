@@ -1,31 +1,47 @@
-import { ADD_POEM, ADD_COUNT, FETCH_POEMS } from "../constants/action-types";
+import { ADD_COUNT, FETCH_AUTHOR_LIKED, CHOOSE_AUTHOR,FETCH_POEMS_BY_AUTHOR, FETCH_AUTHOR_LIST
+} from "../constants/action-types";
 
-function addPoem(title, para) {
-    return {
-        type: "ADD_POEM",
-        payload: {
-            title,
-            para
-        }
-    }
-}
 
 function addCount(count) {
     return {
-        type: "ADD_COUNT",
+        type: ADD_COUNT,
         payload: count
     }
 }
 
-function fetchPoems() {
+function chooseAuthors(name,describe) {
     return {
-        type: "FETCH_POEMS"
+        type: CHOOSE_AUTHOR,
+        payload: { name, describe }
+    }
+}
+
+function fetchAuthorList() {
+    return {
+        type: FETCH_AUTHOR_LIST
     }
 }
 
 
+function fetchAuthorLiked(value) {
+    console.log(value);
+    return {
+        type: FETCH_AUTHOR_LIKED,
+        payload: value
+    }
+}
+
+function fetchPoemsByAuthor(author) {
+    return {
+        type: FETCH_POEMS_BY_AUTHOR,
+        payload: author
+    }
+}
+
 export {
-    addPoem,
     addCount,
-    fetchPoems
+    fetchAuthorList,
+    fetchAuthorLiked,
+    chooseAuthors,
+    fetchPoemsByAuthor
 }
