@@ -4,6 +4,7 @@ import { Tabs } from 'antd';
 
 import './Resume.css'
 import MapProject from  './MapProject/MapProject';
+import PoemProject from  './PoemProject/PoemProject';
 
 const { TabPane } = Tabs;
 
@@ -31,7 +32,7 @@ export default class Resume extends Component{
                         <MapProject />
                     </TabPane>
                     <TabPane tab={project[0]} key='2'>
-                        <div>123</div>
+                        <PoemProject />
                     </TabPane>
                 </Tabs>
             </div>

@@ -3,13 +3,12 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 import './Homepage.css';
 import Footer from '../Footer/Footer'
-import ImgCarousel from '../ImgCarousel/ImgCarousel'
 import HeaderNav from "../HeaderNav/HeaderNav";
 import Resume from "../Resume/Resume";
 
 import { connect } from 'react-redux'
 import { addCount }  from '../../../reudx/actions/poems';
-import {getAuthorList} from '../../../reudx/selectors';
+import { getAuthorList} from '../../../reudx/selectors';
 
 class Homepage extends Component{
 
@@ -22,6 +21,7 @@ class Homepage extends Component{
     }
 
     add = () => {
+        console.log(this.props)
         this.props.addCount(this.props.count + 1);
 
         // const a = this.props.poems.count + 1;

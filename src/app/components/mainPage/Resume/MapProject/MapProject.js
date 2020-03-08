@@ -12,6 +12,11 @@ const skill = [
     'React','Rdeux', 'saga' ,'immutable.js', 'three.js' ,'webpack', 'canvans'
 ];
 
+const work = [
+    '封装canvas为React组件，维护公司⾃⼰的React组件库','在UI线程和计算线程寻找平衡，在⾼效渲染的同时，保证⽤⼾操作的良好体验',
+    '对接⾼德地图接口，实现室内和和室外地图的⽐例统⼀','通过计算机图像学和平⾯渲染3D地集成webpack打包'
+]
+
 export default class MapProject extends Component{
     constructor(props) {
         super(props)
@@ -26,9 +31,9 @@ export default class MapProject extends Component{
                 <div className="card">
                     <p>职责</p>
                     <ul>
-                        {respsose.map(item => {
+                        {respsose.map((item,index) => {
                             return (
-                                <li>{item}</li>
+                                <li key={index}>{item}</li>
                             )
                         })}
                     </ul>
@@ -36,9 +41,19 @@ export default class MapProject extends Component{
                 <div className="card">
                     <p>技术栈</p>
                     <ul>
-                        {skill.map(item => {
+                        {skill.map((item,index) => {
                             return (
-                                <li>{item}</li>
+                                <li key={index}>{item}</li>
+                            )
+                        })}
+                    </ul>
+                </div>
+                <div className="show">
+                    <p>成果</p>
+                    <ul>
+                        {work.map((item,index) => {
+                            return (
+                                <li key={index}>{item}</li>
                             )
                         })}
                     </ul>

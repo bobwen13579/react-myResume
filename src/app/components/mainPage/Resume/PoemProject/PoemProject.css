@@ -3,7 +3,6 @@
     max-width: 300px;
     border: 1px solid #1C6EA4;
     border-radius: 18px;
-    margin: 10px;
 }
 .show{
     border: 1px solid #1C6EA4;
@@ -15,12 +14,4 @@
     justify-content: space-around;
     overflow: hidden;
     flex-wrap: wrap;
-}
-p{
-    text-align: center;
-    font-size: small;
-    margin: 5px;
-}
-li{
-    font-size: small;
 }
